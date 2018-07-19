@@ -1,3 +1,5 @@
 "release_id", "release_date", "action", "file_name"
 "r000001","2018-07-19 10:14:29","create","test.sql"
 "r000001","2018-07-19 10:14:29","revert","rtest.sql"
+"r000002","2018-07-19 10:20:10","create","test001.sql"
+"r000002","2018-07-19 10:20:10","revert","rtest001.sql"
