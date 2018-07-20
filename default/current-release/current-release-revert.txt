@@ -11,4 +11,3 @@
 # drop_table__order_lines.sql
 
 
-rtest.sql
