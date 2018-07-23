@@ -1,2 +1,0 @@
-@@rtest.sql
-quit;
