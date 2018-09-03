@@ -10,3 +10,6 @@
 # create_table__order_lines.sql
 # create_indexes__order_lines.sql
 
+script (1).sql
+script (2).sql
+script (3).sql
