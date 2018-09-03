@@ -1,4 +1,1 @@
-release_id," ""release_date"""," ""action"""," ""file_name"""
-www,,,
-"r000021","2018-08-01 12:33:04","create","dummy.sql"
-"r000021","2018-08-01 12:33:04","create","Packages/dummy2.sql"
+"release_id", "release_date", "action", "file_name"
