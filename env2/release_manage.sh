@@ -83,7 +83,7 @@ SQLP="${SQLP} -L"
 if [ "$MODE" = "apply" ]; then
     echo "Applying release: $START_RELEASE"
 
-    $SQLP $DBUSER/$DBPASS@$DB @apply-release-$START_RELEASE.sql |tee -a  apply.out
+    $SQLP $DBUSER/$DBPASS@$DB @Releases\apply-release-$START_RELEASE.sql |tee -a  apply.out
 
     echo "Release $START_RELEASE applied"
 fi
@@ -91,7 +91,7 @@ fi
 if [ "$MODE" = "revert" ]; then
     echo "Reverting release $START_RELEASE"
 
-    $SQLP $DBUSER/$DBPASS@$DB @revert-release-$START_RELEASE.sql |tee -a revert.out
+    $SQLP $DBUSER/$DBPASS@$DB @Releases\revert-release-$START_RELEASE.sql |tee -a revert.out
     
     echo "Release $START_RELEASE applied"
 fi
