@@ -11,5 +11,5 @@
 # create_indexes__order_lines.sql
 
 Scripts\test (1).sql
-Scripts\test (2).sql
 Scripts\test (3).sql
+Scripts\test (5).sql
