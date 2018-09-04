@@ -20,7 +20,7 @@ then
  echo
  echo "./release_manage.sh mode -m apply|revert -r release -u username -p password -d tnsname|ezconnect" 
  echo "-m: apply mode. apply - apply release. revert - revert release"
- echo "-r: release id. '-r 000011' or '-r 11' or '-r 5:11'"
+ echo "-r: release id. '-r 000011'"
  echo "-d: db connection string. default no string (local db)"
  echo "-u: db username."
  echo "-p: db password"
@@ -32,7 +32,7 @@ fi
 #echo "params:" $1 $MODE $RELEASE $DB $DBUSER $DBPASS $HELP
 
 START_RELEASE=$(echo $RELEASE | awk 'BEGIN {FS=":"}{print $1}')
-END_RELEASE=$(echo $RELEASE | awk 'BEGIN {FS=":"}{print $2}')
+#END_RELEASE=$(echo $RELEASE | awk 'BEGIN {FS=":"}{print $2}')
 
 #echo $START_RELEASE
 #echo $END_RELEASE
@@ -43,11 +43,11 @@ if [ -z "$START_RELEASE" ]; then
   exit -1
 fi
 
-if [ -z "$END_RELEASE" ]; then
-  END_RELEASE=$START_RELEASE
-fi
+#if [ -z "$END_RELEASE" ]; then
+#  END_RELEASE=$START_RELEASE
+#fi
 
-echo "Going to $MODE releases from $START_RELEASE to $END_RELEASE"
+echo "Going to $MODE release $START_RELEASE"
 echo 
 
 if [ ! -z "$PFILE" ]; then
@@ -81,27 +81,17 @@ SQLP="${SQLP} -L"
 
 
 if [ "$MODE" = "apply" ]; then
-  for i in $(seq -f "release-r%06g" $START_RELEASE $END_RELEASE)
-  do
-    echo "Applying release folder: $i"
-    
-    pushd $i 
+    echo "Applying release: $START_RELEASE"
+
     $SQLP $DBUSER/$DBPASS@$DB @apply-release.sql |tee -a  apply.out
-    popd 
-    
-    echo "Release folder $i applied"
-  done
+
+    echo "Release $START_RELEASE applied"
 fi
 
 if [ "$MODE" = "revert" ]; then
-for i in $(seq -f "release-r%06g" $END_RELEASE -1 $START_RELEASE )
-  do
-    echo "Reverting release folder: $i"
-    
-    pushd $i 
+    echo "Reverting release $START_RELEASE"
+
     $SQLP $DBUSER/$DBPASS@$DB @revert-release.sql |tee -a revert.out
-    popd
     
-    echo "Release folder $i applied"
-  done
+    echo "Release $START_RELEASE applied"
 fi
