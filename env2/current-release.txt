@@ -10,4 +10,3 @@
 # create_table__order_lines.sql
 # create_indexes__order_lines.sql
 
-Scripts\test (1).sql
