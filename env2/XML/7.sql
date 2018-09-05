@@ -1,1 +1,0 @@
-select 37 from dual;
