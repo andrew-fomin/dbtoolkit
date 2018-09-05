@@ -1,1 +1,1 @@
-select 5 from dual;
+select 25 from dual;

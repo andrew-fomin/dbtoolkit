@@ -1,1 +1,1 @@
-select 4 from dual;
+select 24 from dual;
