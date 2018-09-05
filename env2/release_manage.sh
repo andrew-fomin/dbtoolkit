@@ -28,34 +28,20 @@ then
  echo
 fi
 
+RELEASE_NAME=$(echo $RELEASE | awk 'BEGIN {FS=":"}{print $1}')
 
-#echo "params:" $1 $MODE $RELEASE $DB $DBUSER $DBPASS $HELP
-
-START_RELEASE=$(echo $RELEASE | awk 'BEGIN {FS=":"}{print $1}')
-#END_RELEASE=$(echo $RELEASE | awk 'BEGIN {FS=":"}{print $2}')
-
-#echo $START_RELEASE
-#echo $END_RELEASE
-
-if [ -z "$START_RELEASE" ]; then
+if [ -z "$RELEASE_NAME" ]; then
   echo "No release to apply/revert is specified. Terminating."
   echo
   exit -1
 fi
-
-#if [ -z "$END_RELEASE" ]; then
-#  END_RELEASE=$START_RELEASE
-#fi
-
-echo "Going to $MODE release $START_RELEASE"
-echo 
 
 if [ ! -z "$PFILE" ]; then
  echo "Using $PFILE properties file. -u/-p/-d keys values are ignored."
  echo
  source "$PFILE"
 else
- echo "No db.properties file is specified. Using -u/-p/-d values."
+ echo "No db.properties file is specified. Trying to use -u/-p/-d values."
 fi
 
 if [ -z $DBUSER ]; then
@@ -63,9 +49,10 @@ if [ -z $DBUSER ]; then
   exit -1
 fi
 
+echo "Going to $MODE release $RELEASE_NAME to $DBUSER/***@$DB"
+echo
 
-
-#todo: properly check sqlpus is avaialble. This construction doesn't work well
+#todo: properly check sqlpus is avaialble. This construction doesn't always work well
 SQLP=$(which sqlplus 2>>/dev/null)
 
 if [ -x "$SQLP" ]; then
@@ -81,17 +68,17 @@ SQLP="${SQLP} -L"
 
 
 if [ "$MODE" = "apply" ]; then
-    echo "Applying release: $START_RELEASE"
+    echo "Applying release: $RELEASE_NAME"
 
-    $SQLP $DBUSER/$DBPASS@$DB @Releases\apply-release-$START_RELEASE.sql |tee -a  apply.out
+    $SQLP $DBUSER/$DBPASS@$DB @Releases/apply-release-$RELEASE_NAME.sql |tee -a  apply.out
 
-    echo "Release $START_RELEASE applied"
+    echo "Release $RELEASE_NAME applied"
 fi
 
 if [ "$MODE" = "revert" ]; then
-    echo "Reverting release $START_RELEASE"
+    echo "Reverting release $RELEASE_NAME"
 
-    $SQLP $DBUSER/$DBPASS@$DB @Releases\revert-release-$START_RELEASE.sql |tee -a revert.out
+    $SQLP $DBUSER/$DBPASS@$DB @Releases/revert-release-$RELEASE_NAME.sql |tee -a revert.out
     
-    echo "Release $START_RELEASE applied"
+    echo "Release $RELEASE_NAME applied"
 fi
