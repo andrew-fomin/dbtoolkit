@@ -1,5 +1,1 @@
 "release_id", "release_date", "action", "file_name"
-"r1418","2018-09-12 11:19:30","create","Create/1.sql"
-"r1418","2018-09-12 11:19:30","revert","Java/2.txt"
-"r1423","2018-09-12 11:23:40","create","Create/1.sql"
-"r1423","2018-09-12 11:23:40","revert","Java/2.txt"
