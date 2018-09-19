@@ -13,3 +13,7 @@
 "relname","2018-09-18 08:36:28","create","WebCat/shared/UnifyTesting2.base64"
 "relname","2018-09-18 08:36:28","revert","RPD/dt.rpd"
 "relname","2018-09-18 08:36:28","revert","WebCat/shared/UnifyTesting2.base64"
+"relname","2018-09-19 09:27:33","create","RPD/testrel.rpd"
+"relname","2018-09-19 09:27:33","create","WebCat/shared/UnifyTesting2.base64"
+"relname","2018-09-19 09:27:33","revert","RPD/testrel.rpd"
+"relname","2018-09-19 09:27:33","revert","WebCat/shared/UnifyTesting2.base64"
