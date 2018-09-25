@@ -1,5 +1,1 @@
 "release_id", "release_date", "action", "file_name"
-"relname","2018-09-19 10:45:28","create","RPD/testrel.rpd"
-"relname","2018-09-19 10:45:28","create","WebCat/shared/UnifyTesting.base64"
-"relname","2018-09-19 10:45:28","revert","RPD/testrel.rpd"
-"relname","2018-09-19 10:45:28","revert","WebCat/shared/UnifyTesting.base64"
