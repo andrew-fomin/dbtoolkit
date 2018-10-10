@@ -1,2 +1,7 @@
 "release_id", "release_date", "action", "file_name"
+<<<<<<< HEAD
 11, 22, 33, 44
+=======
+"tt","2018-10-10 10:17:44","create","RPD/tt.RPD"
+>>>>>>> acda74601fb3b79a9e9246346c6e928269579dbf
+"ttt","2018-10-10 10:41:43","create","RPD/ttt.rpd"
